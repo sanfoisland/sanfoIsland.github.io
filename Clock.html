@@ -1,23 +1,28 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="../flipclock.css">
+<head>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<body onload="startTime()">
 
-		<script src="../flipclock.js"></script>		
-	</head>
-	<body>
-		<div class="clock" style="margin:2em;"></div>
+<div id="txt"></div>
 
-		<script type="text/javascript">
-			var clock;
-			
-			$(document).ready(function() {
-				clock = $('.clock').FlipClock({
-					clockFace: 'TwentyFourHourClock'
-				});
-			});
-		</script>
-		
-	</body>
+</body>
 </html>

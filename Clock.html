@@ -2,7 +2,7 @@
 <html>
 <head>
 <style type="text/css">
-    #clock{
+    #clock, #date {
   color:white;
   font: 2em sans-serif; 
   background: black; 
@@ -18,11 +18,18 @@
 <script>
 function startTime() {
     var today = new Date();
+    var yy = today.getFullYear();
+    var mm = today.getMonth();
+    var dd = today.getDay();
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
+    
+    document.getElementById('date').innerHTML =
+    dd + "/" + mm + "/" + yy;
+    
     document.getElementById('clock').innerHTML =
     h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
@@ -36,6 +43,7 @@ function checkTime(i) {
 
 <body onload="startTime()">
 
+<div id="date"></div>
 <div id="clock"></div>
 
 </body>

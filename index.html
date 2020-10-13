@@ -25,47 +25,16 @@
 
 		<!-- First -->
 			<section id="first" class="main">
-			  <header>				
-				<script>
-				// Set the date we're counting down to
-				var countDownDate = new Date("Jul 18, 2020 0:0:0").getTime();
-
-				// Update the count down every 1 second
-				var x = setInterval(function() {
-
-				// Get today's date and time
-				var now = new Date().getTime();
-
-				// Find the distance between now and the count down date
-				var distance = countDownDate - now;
-
-				// Time calculations for days, hours, minutes and seconds
-				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-				// Output the result in an element with id="demo"
-				document.getElementById("demo").innerHTML = days + "日 " + hours + "小時 "
-				+ minutes + "分鐘 " + seconds + "秒 ";
-
-				// If the count down is over, write some text 
-				if (distance < 0) {
-					clearInterval(x);
-					document.getElementById("demo").innerHTML = "2020 年 7 月 18 日";
-				  }
-				}, 1000);
-				</script>
-				  
-				  <div class="container">
+			  <header>
+				<div class="container">
 					
-					<h2>森火洲建成四週年</h2>
-					<h2 class="button" id="demo"></h2>
+				    <h2>森火洲建成四週年</h2>
+					<h2 class="button" id="countDown"></h2>
 					<hr>
 					
 				    <h2>簡介</h2>
-						<p>森火洲的發展目標是成為一個綜合城市，主要會建造城市內必須有的設施。<br>例如住宅、商業大樓、商場、工業區、運輸設施等，希望能夠在島上可以自給自足。</p>
-					</div>
+					<p>森火洲的發展目標是成為一個綜合城市，主要會建造城市內必須有的設施。<br>例如住宅、商業大樓、商場、工業區、運輸設施等，希望能夠在島上可以自給自足。</p>
+				</div>
 			  </header>
 				<div class="content dark style1 featured">
 					<div class="container">
@@ -207,7 +176,43 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			
+		
 			<!-- Date -->
+			<script>
+				const second = 1000,
+				      minute = second * 60,
+				      hour = minute * 60,
+				      day = hour * 24;
+				
+				// Set the date we're counting down to
+				var countDownDate = new Date("Jul 18, 2021 0:0:0").getTime();
 
+				// Update the count down every 1 second
+				var x = setInterval(function() {
+
+				// Get today's date and time
+				var now = new Date().getTime();
+
+				// Find the distance between now and the count down date
+				var distance = countDownDate - now;
+
+				// Time calculations for days, hours, minutes and seconds
+				var days = Math.floor(distance / (day));
+				var hours = Math.floor((distance % (day)) / (hour));
+				var minutes = Math.floor((distance % (hour)) / (minute));
+				var seconds = Math.floor((distance % (minute)) / second);
+
+				// Output the result in an element with id="demo"
+				document.getElementById("countDown").innerHTML = days + "日 " + hours + "小時 "
+				+ minutes + "分鐘 " + seconds + "秒 ";
+
+				// If the count down is over, write some text 
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("countDown").innerHTML = "2020 年 7 月 18 日";
+				  }
+				}, second);
+				</script>
 	</body>
 </html>
